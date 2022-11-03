@@ -1,0 +1,56 @@
+<div id="projectData">
+    <div id="all" class="col s12">
+        <div class="row _content">
+            <!--Карточка материала-->
+            <th:block th:each="ctg:${materials}">
+                <th:block th:each="mat:${ctg.second}">
+                    <div class="col s12 m6 l4">
+                        <a th:href="${'materials/'+mat.id}">
+                            <div class="card teal lighten-5 hoverable">
+                                <div class="card-content black-text material__height">
+                                    <span class="card-title" th:text="${mat.title}"></span>
+                                    <!--Название материала-->
+                                    <div class="author">
+                                        <!--Автор материала-->
+                                        <p th:text="${mat.refMaterialCrossTeacherEntities.get(0).shortInfo()}"></p>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <span class="orange-text" th:text="${ctg.first.description}"></span>
+                                    <!--Категория материала-->
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </th:block>
+            </th:block>
+        </div>
+    </div>
+    <th:block th:each="ctg:${materials}">
+        <div th:id="${ctg.first.title}" class="col s12">
+            <div class="row _content">
+                <!--Карточка материала-->
+                <th:block th:each="mat:${ctg.second}">
+                    <div class="col s12 m6 l4">
+                        <a th:href="${'materials/'+mat.id}">
+                            <div class="card teal lighten-5 hoverable">
+                                <div class="card-content black-text material__height">
+                                    <span class="card-title" th:text="${mat.title}"></span>
+                                    <!--Название материала-->
+                                    <div class="author">
+                                        <!--Автор материала-->
+                                        <p th:text="${mat.refMaterialCrossTeacherEntities.get(0).shortInfo()}"></p>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <span class="orange-text" th:text="${ctg.first.description}"></span>
+                                    <!--Категория материала-->
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </th:block>
+</div>

@@ -1,0 +1,25 @@
+
+/*.wrapper {
+    min-height: 100%;
+} */
+
+/* ---------------*/
+/* --------------- */
+
+._form {
+    margin-left: 20px !important;
+}
+
+._wrapper {
+    padding-right: 5px !important;
+    padding-left: 90px !important;
+    padding-top: 50px !important;
+    padding-bottom: 10px !important;
+}
+._title {
+    padding-left: 20px !important;
+}
+._form__string {
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/materials.css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/materialize/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/d46c136975.js" crossorigin="anonymous"></script>
+    <title>Материалы</title>
+    <script>
+        $(()=>{
+            const sideNav = document.querySelector('.sidenav');
+            M.Sidenav.init(sideNav, {});
+            //параллакс
+            $(document).ready(function () {
+                $('.parallax').parallax();
+            });
+            //табы
+            $(document).ready(function () {
+                $('.tabs').tabs();
+            });
+
+
+
+            var s = function (){
+                var valueSelected = this.value;
+                var data = {"teacher":valueSelected}
+                console.log(data)
+
+
+                    $.post({
+                        url: '/materials',
+                        data: JSON.stringify(data),
+                        processData: false,
+                        contentType: "application/json",
+                        success: function(data){
+                            $('#projectData').replaceWith(data)
+                        },error: function (){
+                        }
+
+                    })
+
+            }
+            document.getElementById('teacherSelector').addEventListener('change',s)
+
+            }
+        )
+    </script>
+</head>
+<body>
+    <div th:insert="parts/header::header"></div>
+    <main>
+        <!--Параллакс-->
+        <div class="parallax-container">
+            <div class="container">
+                <h1 class="center white-text">
+                    Наши материалы
+                </h1>
+            </div>
+            <div class="parallax"><img src="/img/gradient_2.jpg"></div>
+        </div>
+        <div class="myContainer">
+            <div class="col s12">
+                <div class="row">
+                    <div th:insert="parts/selectors::teachers"></div>
+                    <div class="col s12 m12 l12">
+                        <div th:insert="parts/selectors::category"></div>
+                        <!--КОнтент раздела Все-->
+
+                        <div id="projectData">
+                            <div id="all" class="col s12">
+                                <div class="row _content">
+                                    <!--Карточка материала-->
+                                    <th:block th:each="ctg:${materials}">
+                                        <th:block th:each="mat:${ctg.second}">
+                                            <div class="col s12 m6 l4">
+                                                <a th:href="${'materials/'+mat.id}">
+                                                    <div class="card teal lighten-5 hoverable">
+                                                        <div class="card-content black-text material__height">
+                                                            <span class="card-title" th:text="${mat.title}"></span>
+                                                            <!--Название материала-->
+                                                            <div class="author">
+                                                                <!--Автор материала-->
+                                                                <p th:text="${mat.refMaterialCrossTeacherEntities.get(0).shortInfo()}"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-action">
+                                                            <span class="orange-text" th:text="${ctg.first.description}"></span>
+                                                            <!--Категория материала-->
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </th:block>
+                                    </th:block>
+                                </div>
+                            </div>
+                            <th:block th:each="ctg:${materials}">
+                                <div th:id="${ctg.first.title}" class="col s12">
+                                    <div class="row _content">
+                                        <!--Карточка материала-->
+                                        <th:block th:each="mat:${ctg.second}">
+                                            <div class="col s12 m6 l4">
+                                                <a th:href="${'materials/'+mat.id}">
+                                                    <div class="card teal lighten-5 hoverable">
+                                                        <div class="card-content black-text material__height">
+                                                            <span class="card-title" th:text="${mat.title}"></span>
+                                                            <!--Название материала-->
+                                                            <div class="author">
+                                                                <!--Автор материала-->
+                                                                <p th:text="${mat.refMaterialCrossTeacherEntities.get(0).shortInfo()}"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-action">
+                                                            <span class="orange-text" th:text="${ctg.first.description}"></span>
+                                                            <!--Категория материала-->
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </th:block>
+                                    </div>
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div th:insert="parts/footer::footer"></div>
+</body>
+</html>

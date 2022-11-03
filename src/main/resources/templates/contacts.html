@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d46c136975.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/contacts.css">
+    <script>
+        $(()=>{
+            const form = document.getElementById("reg-form")
+            let f = function projectsSubmited(e){
+                let data = {
+                    firstName:$("#first_name").val(),
+                    lastName:$("#last_name").val(),
+                    email:$("#email").val(),
+                    inputText:$("#input_text").val(),
+                }
+
+                console.log(JSON.stringify(data))
+
+                /*/!*проверить post*!/
+                $.post({
+                    url: '/projects',
+                    data: JSON.stringify(data),
+                    processData: false,
+                    contentType: "application/json",
+                    success: function(data){
+                        try{
+                            $('#projectData').replaceWith(data)
+                        }catch (e) {
+                            alert(e)
+                        }
+                    },error: function (e){
+                        alert(e)
+                    }
+                })*/
+                e.preventDefault()
+            }
+            form.addEventListener("submit",f,true)
+        })
+    </script>
+    <title>Контакты</title>
+</head>
+
+<body>
+<!--Хэдер-->
+<div class="navbar-fixed">
+    <nav class="teal">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="46"
+                                                             height="21" fill="none" viewBox="0 0 46 21">
+                    <ellipse cx="1.484" cy="1.607" fill="#F9F8F8" rx="1.484" ry="1.482" />
+                    <path stroke="#F9F8F8" stroke-width=".25" d="M0-.125h21.383"
+                          transform="rotate(56.279 -.76 2.19) skewX(-.062)" />
+                    <path stroke="#F9F8F8" stroke-width=".25" d="M1.484 1.482h43.032" />
+                    <ellipse cx="13.355" cy="19.393" fill="#FFAC3A" rx="1.484" ry="1.482" />
+                    <ellipse cx="44.516" cy="1.607" fill="#FFAC3A" rx="1.484" ry="1.482" />
+                    <path stroke="#FFAC3A" stroke-width=".35"
+                          d="M44.516 1.641C29.677 3.865 16.323 6.83 13.355 19.427" />
+                </svg><span class="logo__text">ВТиКГ</span></a>
+                <a href="" data-target="mobile-nav" class="sidenav-trigger">
+                    <i class="large material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="/index" class="white-text">Главная</a>
+                    </li>
+                    <li>
+                        <a href="/news" class="white-text">Новости</a>
+                    </li>
+                    <li>
+                        <a href="/events" class="white-text">События</a>
+                    </li>
+                    <li>
+                        <a href="/projects" class="white-text">Проекты</a>
+                    </li>
+                    <li>
+                        <a href="/materials" class="white-text">Материалы</a>
+                    </li>
+                    <li>
+                        <a href="/teachers" class="white-text">Преподаватели</a>
+                    </li>
+                    <li>
+                        <a href="/about" class="white-text">О нас</a>
+                    </li>
+                    <li>
+                        <a href="/contacts" class="white-text">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--Боковое меню-->
+<ul class="sidenav teal" id="mobile-nav">
+    <li>
+        <a href="/index" class="white-text">Главная</a>
+    </li>
+    <li>
+        <a href="/news" class="white-text">Новости</a>
+    </li>
+    <li>
+        <a href="/events" class="white-text">События</a>
+    </li>
+    <li>
+        <a href="/projects" class="white-text">Проекты</a>
+    </li>
+    <li>
+        <a href="/materials" class="white-text">Материалы</a>
+    </li>
+    <li>
+        <a href="/teachers" class="white-text">Преподаватели</a>
+    </li>
+    <li>
+        <a href="/about" class="white-text">О нас</a>
+    </li>
+    <li>
+        <a href="/contacts" class="white-text">Контакты</a>
+    </li>
+</ul>
+
+<!--Весь контент, кроме хэдэра и футера-->
+<main>
+    <div class="container">
+        <h2 class="header center orange-text">Контакты</h2>
+        <!--Оберточные контейнеры для секции контактов-->
+        <div class="section">
+            <div class="row">
+                <!--Человек-->
+                <div class="col s12 m6 l3">
+                    <div class="icon-block">
+                        <img class="responsive-img circle" src="/img/workers/zafkaf.jpg">
+                        <h6 class="center">Заведующая кафедрой</h6>
+                        <p class="center light">Фамилия Имя Отчество</p>
+                    </div>
+                </div>
+                <!--Человек-->
+                <div class="col s12 m6 l3">
+                    <div class="icon-block">
+                        <img class="responsive-img circle" src="/img/workers/ved_eng.jpg">
+                        <h6 class="center">Ведущий инженер</h6>
+                        <p class="center light">Фамилия Имя Отчество</p>
+                    </div>
+                </div>
+                <!--Человек-->
+                <div class="col s12 m6 l3">
+                    <div class="icon-block">
+                        <img class="responsive-img circle" src="/img/workers/lab.jpg">
+                        <h6 class="center">Заведующий лабораториями</h6>
+                        <p class="center light">Фамилия Имя Отчество</p>
+                    </div>
+                </div>
+                <!--Человек-->
+                <div class="col s12 m6 l3">
+                    <div class="icon-block">
+                        <img class="responsive-img circle" src="/img/workers/delpr.jpg">
+                        <h6 class="center">Делопроизводитель</h6>
+                        <p class="center light">Фамилия Имя Отчество</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Секция с картой-->
+    <div class="container">
+        <div class="section center">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1400.6287420203084!2d135.06316330635732!3d48.49422047882185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5efaea1305bf04a1%3A0xb61bb41308314cb4!2z0JTQsNC70YzQvdC10LLQvtGB0YLQvtGH0L3Ri9C5INCz0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90YvQuSDRg9C90LjQstC10YDRgdC40YLQtdGCINC_0YPRgtC10Lkg0YHQvtC-0LHRidC10L3QuNGP!5e0!3m2!1sru!2sru!4v1652172316241!5m2!1sru!2sru"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <!--Секция с адресом и телефонами-->
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12 l5">
+                    <div class="icon-block">
+                        <h5 class="">Адрес</h5>
+                        <h6 class="light">680021, г. Хабаровск, улица Серышева, 47</h6>
+                        <h6 class="light">кабинеты: 441, 439, 437, 435</h6>
+                        <h6 class="light">эл. почта: saprz@festu.khv.ru</h6>
+                        <h6 class="light">часы работы: пн-пт 8.00 - 18.00</h6>
+                        <br>
+                    </div>
+                </div>
+                <div class="col l2 s0">
+                    <div class="icon-block">
+
+                    </div>
+                </div>
+                <div class="col s12 l5">
+                    <div class="icon-block">
+                        <h5 class="">Телефоны кафедры</h5>
+                        <h6 class="light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                               viewBox="0 0 20 20">
+                            <mask id="a" width="20" height="20" x="0" y="0" maskUnits="userSpaceOnUse"
+                                  style="mask-type:alpha">
+                                <path fill="#C4C4C4" d="M0 0h20v20H0z" />
+                            </mask>
+                            <g mask="url(#a)">
+                                <path fill="#FF9800"
+                                      d="M15.75 9.771c-.041-1.57-.618-2.913-1.729-4.031C12.91 4.621 11.569 4.048 10 4.021V2.688a7.3 7.3 0 0 1 4.969 2.104 7.024 7.024 0 0 1 1.521 2.239c.368.854.566 1.767.593 2.74H15.75Zm-3.292 0a2.588 2.588 0 0 0-.76-1.709A2.447 2.447 0 0 0 10 7.312V5.979c1.041.028 1.923.407 2.646 1.136.722.729 1.104 1.614 1.146 2.656h-1.334Zm3.709 7.271c-1.653 0-3.274-.382-4.865-1.146a15.294 15.294 0 0 1-4.25-3.021 15.808 15.808 0 0 1-3.021-4.25c-.77-1.583-1.156-3.201-1.156-4.854a.81.81 0 0 1 .26-.604.86.86 0 0 1 .615-.25h2.812c.209 0 .393.066.553.198a.77.77 0 0 1 .281.51l.521 2.521c.041.195.038.372-.011.531a.872.872 0 0 1-.26.406L5.729 8.979a13.693 13.693 0 0 0 2.25 2.938 14.5 14.5 0 0 0 3.063 2.333l1.854-1.917a1.05 1.05 0 0 1 .458-.291c.153-.042.326-.049.521-.021l2.437.521a.786.786 0 0 1 .511.27.833.833 0 0 1 .198.563v2.792c0 .236-.083.44-.25.614a.806.806 0 0 1-.604.261ZM5.083 7.708 6.5 6.354a.18.18 0 0 0 .052-.094.498.498 0 0 0 .01-.093l-.354-1.792a.18.18 0 0 0-.062-.094.17.17 0 0 0-.104-.031H4.354a.1.1 0 0 0-.073.031.1.1 0 0 0-.031.073c.041.556.128 1.112.26 1.667.132.555.323 1.118.573 1.687Zm10.5 7.959c.028 0 .052-.01.073-.032a.099.099 0 0 0 .032-.073v-1.666a.164.164 0 0 0-.032-.104.185.185 0 0 0-.094-.063l-1.708-.333c-.041-.014-.073-.018-.094-.011a.207.207 0 0 0-.072.053l-1.417 1.458a8.951 8.951 0 0 0 1.687.531c.57.118 1.111.198 1.625.24Z" />
+                            </g>
+                        </svg> 40-73-50 (ауд. 441, 439)</h6>
+                        <h6 class="light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                               viewBox="0 0 20 20">
+                            <mask id="a" width="20" height="20" x="0" y="0" maskUnits="userSpaceOnUse"
+                                  style="mask-type:alpha">
+                                <path fill="#C4C4C4" d="M0 0h20v20H0z" />
+                            </mask>
+                            <g mask="url(#a)">
+                                <path fill="#FF9800"
+                                      d="M15.75 9.771c-.041-1.57-.618-2.913-1.729-4.031C12.91 4.621 11.569 4.048 10 4.021V2.688a7.3 7.3 0 0 1 4.969 2.104 7.024 7.024 0 0 1 1.521 2.239c.368.854.566 1.767.593 2.74H15.75Zm-3.292 0a2.588 2.588 0 0 0-.76-1.709A2.447 2.447 0 0 0 10 7.312V5.979c1.041.028 1.923.407 2.646 1.136.722.729 1.104 1.614 1.146 2.656h-1.334Zm3.709 7.271c-1.653 0-3.274-.382-4.865-1.146a15.294 15.294 0 0 1-4.25-3.021 15.808 15.808 0 0 1-3.021-4.25c-.77-1.583-1.156-3.201-1.156-4.854a.81.81 0 0 1 .26-.604.86.86 0 0 1 .615-.25h2.812c.209 0 .393.066.553.198a.77.77 0 0 1 .281.51l.521 2.521c.041.195.038.372-.011.531a.872.872 0 0 1-.26.406L5.729 8.979a13.693 13.693 0 0 0 2.25 2.938 14.5 14.5 0 0 0 3.063 2.333l1.854-1.917a1.05 1.05 0 0 1 .458-.291c.153-.042.326-.049.521-.021l2.437.521a.786.786 0 0 1 .511.27.833.833 0 0 1 .198.563v2.792c0 .236-.083.44-.25.614a.806.806 0 0 1-.604.261ZM5.083 7.708 6.5 6.354a.18.18 0 0 0 .052-.094.498.498 0 0 0 .01-.093l-.354-1.792a.18.18 0 0 0-.062-.094.17.17 0 0 0-.104-.031H4.354a.1.1 0 0 0-.073.031.1.1 0 0 0-.031.073c.041.556.128 1.112.26 1.667.132.555.323 1.118.573 1.687Zm10.5 7.959c.028 0 .052-.01.073-.032a.099.099 0 0 0 .032-.073v-1.666a.164.164 0 0 0-.032-.104.185.185 0 0 0-.094-.063l-1.708-.333c-.041-.014-.073-.018-.094-.011a.207.207 0 0 0-.072.053l-1.417 1.458a8.951 8.951 0 0 0 1.687.531c.57.118 1.111.198 1.625.24Z" />
+                            </g>
+                        </svg> 40-76-05 (ауд. 437)</h6>
+                        <h6 class="light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                               viewBox="0 0 20 20">
+                            <mask id="a" width="20" height="20" x="0" y="0" maskUnits="userSpaceOnUse"
+                                  style="mask-type:alpha">
+                                <path fill="#C4C4C4" d="M0 0h20v20H0z" />
+                            </mask>
+                            <g mask="url(#a)">
+                                <path fill="#FF9800"
+                                      d="M15.75 9.771c-.041-1.57-.618-2.913-1.729-4.031C12.91 4.621 11.569 4.048 10 4.021V2.688a7.3 7.3 0 0 1 4.969 2.104 7.024 7.024 0 0 1 1.521 2.239c.368.854.566 1.767.593 2.74H15.75Zm-3.292 0a2.588 2.588 0 0 0-.76-1.709A2.447 2.447 0 0 0 10 7.312V5.979c1.041.028 1.923.407 2.646 1.136.722.729 1.104 1.614 1.146 2.656h-1.334Zm3.709 7.271c-1.653 0-3.274-.382-4.865-1.146a15.294 15.294 0 0 1-4.25-3.021 15.808 15.808 0 0 1-3.021-4.25c-.77-1.583-1.156-3.201-1.156-4.854a.81.81 0 0 1 .26-.604.86.86 0 0 1 .615-.25h2.812c.209 0 .393.066.553.198a.77.77 0 0 1 .281.51l.521 2.521c.041.195.038.372-.011.531a.872.872 0 0 1-.26.406L5.729 8.979a13.693 13.693 0 0 0 2.25 2.938 14.5 14.5 0 0 0 3.063 2.333l1.854-1.917a1.05 1.05 0 0 1 .458-.291c.153-.042.326-.049.521-.021l2.437.521a.786.786 0 0 1 .511.27.833.833 0 0 1 .198.563v2.792c0 .236-.083.44-.25.614a.806.806 0 0 1-.604.261ZM5.083 7.708 6.5 6.354a.18.18 0 0 0 .052-.094.498.498 0 0 0 .01-.093l-.354-1.792a.18.18 0 0 0-.062-.094.17.17 0 0 0-.104-.031H4.354a.1.1 0 0 0-.073.031.1.1 0 0 0-.031.073c.041.556.128 1.112.26 1.667.132.555.323 1.118.573 1.687Zm10.5 7.959c.028 0 .052-.01.073-.032a.099.099 0 0 0 .032-.073v-1.666a.164.164 0 0 0-.032-.104.185.185 0 0 0-.094-.063l-1.708-.333c-.041-.014-.073-.018-.094-.011a.207.207 0 0 0-.072.053l-1.417 1.458a8.951 8.951 0 0 0 1.687.531c.57.118 1.111.198 1.625.24Z" />
+                            </g>
+                        </svg> 40-78-29 (ауд. 435)</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Форма обратной связи (кнопка)-->
+    <div class="fixed-action-btn direction-top" style="bottom: 45px; right: 24px;">
+        <a id="feedback" class="btn btn-floating btn-large orange" onClick="$('.tap-target').tapTarget('open')">
+            <i class="material-icons">create</i>
+        </a>
+    </div>
+    <!--Форма обратной связи (высплывающая форма)-->
+    <div class="tap-target-wrapper _wrapper" style="right: -648.2px; position: fixed; bottom: -526.6px;">
+        <div class="tap-target white" data-target="feedback">
+            <div class="tap-target-content white-text _wrapper"
+                 style="width: 200px; height: 400px; inset: 0; vertical-align: bottom;">
+                <h5 class="orange-text _title center">Свяжитесь с нами</h5>
+                <form class="col s12 _form" id="reg-form">
+                    <div class="row _form__string">
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" class="validate" required>
+                            <!--Поле для ввода имени-->
+                            <label for="first_name">Имя</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate" required>
+                            <!--Поле для ввода фамилии-->
+                            <label for="last_name">Фамилия</label>
+                        </div>
+                    </div>
+                    <div class="row _form__string">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate" required>
+                            <!--Поле для ввода емейла-->
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row _form__string">
+                        <div class="input-field col s12">
+                            <input id="input_text" type="text" required data-length="10">
+                            <!--Поле для ввода текста-->
+                            <label for="input_text">Ваш вопрос</label>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <!--Кнопка отправки-->
+                        <div class="input-field col s6">
+                            <button class="btn btn-medium btn-register waves-effect waves-light" type="submit" name="action">Отправить</button>
+                        </div>
+                    </div>
+                </form>
+                <!--<form action="">
+                <a href="" class="btn-floating red white-text circle"><i class="material-icons">close</i></a>
+            </form>-->
+            </div>
+        </div>
+        <!--Чтобы не было видно кнопки связи на открытой форме (в общем, лучше просто не трогать)-->
+        <div class="tap-target-wave" style="top: 344px; left: 344px; width: 112px; height: 112px;">
+            <a class="btn btn-floating btn-large orange tap-target-origin">
+                <i class="material-icons">create</i>
+            </a>
+        </div>
+    </div>
+    <!--
+<div class="fixed-action-btn direction-top active" style="bottom: 45px; right: 24px;">
+    <a id="menu" class="btn btn-floating btn-large orange" onClick="$('.tap-target').tapTarget('open')">
+        <i class="material-icons">create</i>
+    </a>
+</div>
+
+<div class="tap-target" data-target="menu">
+    <div class="tap-target-content">
+        <h5>Title</h5>
+        <p>A bunch of text</p>
+    </div>
+</div>
+-->
+</main>
+
+<!--Подвал сайта-->
+<footer class="page-footer teal darken-3">
+    <div class="container">
+        <div class="row">
+            <div class="col l8 s12">
+                <h5 class="white-text">
+                    <a href="index.html" class="brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="46"
+                                                                 height="21" fill="none" viewBox="0 0 46 21">
+                        <ellipse cx="1.484" cy="1.607" fill="#F9F8F8" rx="1.484" ry="1.482" />
+                        <path stroke="#F9F8F8" stroke-width=".25" d="M0-.125h21.383"
+                              transform="rotate(56.279 -.76 2.19) skewX(-.062)" />
+                        <path stroke="#F9F8F8" stroke-width=".25" d="M1.484 1.482h43.032" />
+                        <ellipse cx="13.355" cy="19.393" fill="#FFAC3A" rx="1.484" ry="1.482" />
+                        <ellipse cx="44.516" cy="1.607" fill="#FFAC3A" rx="1.484" ry="1.482" />
+                        <path stroke="#FFAC3A" stroke-width=".35"
+                              d="M44.516 1.641C29.677 3.865 16.323 6.83 13.355 19.427" />
+                    </svg><span class="logo__text white-text">ВТиКГ</span></a>
+                </h5>
+                <p class="white-text">Информация (c) ДВГУПС, кафедра ВТиКГ</p>
+                <p class="white-text">Разработка (с) кафедра ВТиКГ, ДВГУПС</p>
+            </div>
+
+            <div class="col l4 s12 left">
+                <h6 class="white-text">г. Хабаровск, ул. Серышева, 47</h6>
+                <h6 class="light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                       viewBox="0 0 20 20">
+                    <mask id="a" width="20" height="20" x="0" y="0" maskUnits="userSpaceOnUse"
+                          style="mask-type:alpha">
+                        <path fill="#FFFFFF" d="M0 0h20v20H0z" />
+                    </mask>
+                    <g mask="url(#a)">
+                        <path fill="#FF9800"
+                              d="M15.75 9.771c-.041-1.57-.618-2.913-1.729-4.031C12.91 4.621 11.569 4.048 10 4.021V2.688a7.3 7.3 0 0 1 4.969 2.104 7.024 7.024 0 0 1 1.521 2.239c.368.854.566 1.767.593 2.74H15.75Zm-3.292 0a2.588 2.588 0 0 0-.76-1.709A2.447 2.447 0 0 0 10 7.312V5.979c1.041.028 1.923.407 2.646 1.136.722.729 1.104 1.614 1.146 2.656h-1.334Zm3.709 7.271c-1.653 0-3.274-.382-4.865-1.146a15.294 15.294 0 0 1-4.25-3.021 15.808 15.808 0 0 1-3.021-4.25c-.77-1.583-1.156-3.201-1.156-4.854a.81.81 0 0 1 .26-.604.86.86 0 0 1 .615-.25h2.812c.209 0 .393.066.553.198a.77.77 0 0 1 .281.51l.521 2.521c.041.195.038.372-.011.531a.872.872 0 0 1-.26.406L5.729 8.979a13.693 13.693 0 0 0 2.25 2.938 14.5 14.5 0 0 0 3.063 2.333l1.854-1.917a1.05 1.05 0 0 1 .458-.291c.153-.042.326-.049.521-.021l2.437.521a.786.786 0 0 1 .511.27.833.833 0 0 1 .198.563v2.792c0 .236-.083.44-.25.614a.806.806 0 0 1-.604.261ZM5.083 7.708 6.5 6.354a.18.18 0 0 0 .052-.094.498.498 0 0 0 .01-.093l-.354-1.792a.18.18 0 0 0-.062-.094.17.17 0 0 0-.104-.031H4.354a.1.1 0 0 0-.073.031.1.1 0 0 0-.031.073c.041.556.128 1.112.26 1.667.132.555.323 1.118.573 1.687Zm10.5 7.959c.028 0 .052-.01.073-.032a.099.099 0 0 0 .032-.073v-1.666a.164.164 0 0 0-.032-.104.185.185 0 0 0-.094-.063l-1.708-.333c-.041-.014-.073-.018-.094-.011a.207.207 0 0 0-.072.053l-1.417 1.458a8.951 8.951 0 0 0 1.687.531c.57.118 1.111.198 1.625.24Z" />
+                    </g>
+                </svg> 40-73-50 (ауд. 441, 439)</h6>
+                <!--<a href="contacts.html">
+                    <h5 class="white-text">
+
+                        Контакты <svg xmlns="http://www.w3.org/2000/svg" width="26" height="20" fill="none"
+                            viewBox="0 0 26 20">
+                            <path fill="#F9F8F8"
+                                d="m16.417 19.375-1.459-1.458L21.833 11H.167V8.917h21.666L14.917 2l1.5-1.5 9.416 9.458-9.416 9.417Z" />
+                        </svg>
+                    </h5>
+
+                </a>-->
+                <div class="footer-icons">
+                    <a href="https://vk.com/vtikg" class="white-text large footer__icon"><i
+                            class="fa-brands fa-vk hoverable small"></i></a>
+                    <a href="https://discord.gg/pPXHFV58fs" class="white-text footer__icon"><i
+                            class="fa-brands fa-discord hoverable small"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer-copyright teal darken-3">
+        <div class="container">
+
+        </div>
+    </div>
+</footer>
+
+
+
+<script src="/materialize/js/materialize.min.js"></script>
+<script>
+    //код для бокового меню
+    const sideNav = document.querySelector('.sidenav');
+    M.Sidenav.init(sideNav, {});
+    //код для формы обратной связи
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.tap-target');
+        var instances = M.TapTarget.init(elems, {
+            // specify options here
+        });
+    });
+    var instance = M.TapTarget.getInstance(elem);
+
+
+</script>
+</body>
+
+</html>

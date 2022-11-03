@@ -1,0 +1,26 @@
+<div id="projectData">
+    <th:block th:each="projectentity: ${projects}">
+        <div class="col s12 m4 l4">
+            <a class="card-href" th:href="${'/projects/'+projectentity.id}">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img th:src="${projectentity.titleImagePath}" alt="Фото карточки"/>
+                    </div>
+                    <div class="card-content card__height">
+                        <span class="card-title" th:text="${projectentity.title}"></span>
+                        <!--Заголовок-->
+                        <p th:text="${projectentity.description}"></p>
+                    </div>
+                    <div class="card-action">
+                        <span class="orange-text" th:text="${projectentity.categories.get(0).title}"></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </th:block>
+    <script>
+        function clicked(id){
+            location.href('/news/'+id)
+        }
+    </script>
+</div>

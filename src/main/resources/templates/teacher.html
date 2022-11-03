@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="">
+    <script src="https://kit.fontawesome.com/d46c136975.js" crossorigin="anonymous"></script>
+    <title>Фамилия Имя Отчество</title>
+</head>
+
+<body>
+<!--Хэдер-->
+<div th:insert="parts/header::header"></div>
+
+
+<!--Весь контент, кроме хэдэра и футера-->
+<main>
+    <div class="container">
+        <h4 class="orange-text" th:text="${teacher.shortInfo()}">Фамилия Имя Отчество</h4>
+        <!--фото и должности-->
+        <div class="row">
+            <div class="col s3">
+                <div class="icon-block">
+                    <img class="responsive-img circle center" th:src="${teacher.getTeacherImagePath()}">
+                </div>
+
+            </div>
+            <div class="col s9">
+                <p class="left-align light orange-text">Ученые звания</p>
+                <th:block th:each="acadStatus:${teacher.getRefAcademicStatusEntity()}">
+                    <p class="light" th:text="${acadStatus.title}"></p>
+                </th:block>
+                <p class="left-align light orange-text">Ученые степени</p>
+                <th:block th:each="acadDegree:${teacher.getRefAcademicDegreesEntity()}">
+                    <p class="light" th:text="${acadDegree.title}"></p>
+                </th:block>
+                <p class="left-align light orange-text">Должности</p>
+                <th:block th:each="status:${teacher.getRefStatusEntity()}">
+                    <p class="light" th:text="${status.title}"></p>
+                </th:block>
+                <p class="left-align light" th:text="${'Педагогический стаж: '+teacher.getExperience() +' лет'}"></p>
+                <p class="light"><a th:href="${'mailto:'+teacher.email}" th:text="${teacher.email}"></a></p>
+            </div>
+        </div>
+        <!--Остальная информация-->
+        <div class="row">
+            <div class="divider"></div>
+            <!--Черточка-->
+            <!--Секция образования-->
+            <div class="section">
+                <h4 class="orange-text">Образование</h4>
+                <ul>
+                    <th:block th:each="education:${teacher.getRefEducationEntities()}">
+                    <li th:text="${education.refEduDirEntity.refEduLevelEntity.level+': '+education.refEduDirEntity.code+' '+education.refEduDirEntity.title + ' - ' + education.eduYear +' год'}"></li>
+                </th:block>
+
+                </ul>
+            </div>
+            <!--Секция преподаваемых дисциплин-->
+            <div class="section">
+                <h4 class="orange-text">Преподаваемые дисциплины</h4>
+                <ul>
+                    <li>Программирование</li>
+                    <li>Java-программирование</li>
+                    <li>Автоматизированные информационные системы</li>
+                    <li>Технологии дополненной и виртуальной реальности</li>
+                </ul>
+            </div>
+            <!--Секция публикаций-->
+            <div class="section">
+                <h4 class="orange-text">Публикации</h4>
+                <ul>
+                    <li>Название 1 статьи</li>
+                    <li>Название 2 статьи</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</main>
+<!--Подвал сайта-->
+<div th:insert="parts/footer::footer"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/materialize/js/materialize.min.js"></script>
+<script>
+    //боковое меню
+    const sideNav = document.querySelector('.sidenav');
+    M.Sidenav.init(sideNav, {});
+</script>
+</body>
+
+</html>

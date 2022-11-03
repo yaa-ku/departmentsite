@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить новость</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script type="text/javascript" th:src="@{/js/news.js}"></script>
+    <link th:href="@{/css/admin.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1>Добавить новость</h1>
+<div>
+    <button id="newsectionbtn">Новый блок</button>
+    <form id="news" action="/news/add" method="post" enctype="multipart/form-data">
+        <div id="formdata">
+            <label>
+                <input type="text" id="name"/>
+            </label>
+            <br/><br/>
+            <div>Аннотация:</div>
+            <label>
+                <textarea rows="2" id="description"></textarea>
+            </label>
+            <br/><br/>
+            <input type="file" id="image_title" accept="image/*,image/jpeg">
+            <div class="block">
+                <label>
+                    <input type="text" class="title"/>
+                </label>
+                <br/><br/>
+
+                <label>
+                    <textarea rows="2" class="content"></textarea>
+                </label>
+                <div class="attach">
+                    <div class="attach__head">Прикрепите файлы (максимум 10 файлов):</div>
+                    <div class="attach__item">
+                        <label>
+                            <div class="attach__up">Загрузить файл</div>
+                            <input class="attach__input" type="file">
+                        </label>
+                        <div class="attach__name"></div>
+                        <div class="attach__delete">Удалить</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input id="submitNews" type="submit" value="Submit"/>
+    </form>
+</div>
+</body>
+</html>

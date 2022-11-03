@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/news.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/d46c136975.js" crossorigin="anonymous"></script>
+    <title>Title</title>
+    <style>
+        [data-tooltip] {
+            position: relative; /* Относительное позиционирование */
+        }
+        [data-tooltip]::after {
+            content: attr(data-tooltip); /* Выводим текст */
+            position: absolute; /* Абсолютное позиционирование */
+            width: 300px; /* Ширина подсказки */
+            background: rgba(255, 255, 255, 0); /* Нет фона */
+            left: 0; top: 0; /* Положение подсказки */
+            color: #000; /* Цвет текста */
+            padding: 0.5em; /* Поля вокруг текста */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+            pointer-events: none; /* Подсказка */
+            opacity: 0; /* Подсказка невидима */
+            transition: 1s; /* Время появления подсказки */
+        }
+        [data-tooltip]:hover::after {
+            opacity: 1; /* Показываем подсказку */
+            top: 2em; /* Положение подсказки */
+        }
+    </style>
+    <script>
+        $(()=>{
+            const form = document.getElementById("projectCategoryForm")
+            let f = function projectsSubmited(e){
+                let data = []
+                document.getElementsByName("categoryCheckBox").forEach(x=>{
+                    const filter = {
+                        "name":x.id,
+                        "checked":x.checked
+                    }
+                    data.push(filter)
+                    console.log(x.id)
+                })
+                console.log(JSON.stringify(data))
+
+                /*проверить post*/
+                $.post({
+                    url: '/events',
+                    data: JSON.stringify(data),
+                    processData: false,
+                    contentType: "application/json",
+                    success: function(data){
+                        try{
+                            $('#eventData').replaceWith(data)
+                        }catch (e) {
+                            alert(e)
+                        }
+                    },error: function (e){
+                        alert(e)
+                    }
+                })
+                e.preventDefault()
+            }
+            form.addEventListener("submit",f,true)
+        })
+    </script>
+</head>
+<body>
+<div th:insert="parts/header::header"></div>
+<div class="myContainer">
+    <div class="col s12">
+        <div class="row">
+            <h4 class="orange-text center">События</h4>
+            <div th:insert="parts/category::project-category"></div>
+            <!--Новости-->
+            <div class="col s12 m8 l9">
+                <div th:insert="parts/container::eventcontainer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="parts/footer::footer"></div>
+<script>
+    //боковое меню
+    const sideNav = document.querySelector('.sidenav');
+    M.Sidenav.init(sideNav, {});
+</script>
+</body>
+</html>

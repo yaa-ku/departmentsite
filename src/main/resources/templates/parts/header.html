@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="header">
+  <div class="navbar-fixed">
+    <nav class="teal">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="46"
+                                                       height="21" fill="none" viewBox="0 0 46 21">
+            <ellipse cx="1.484" cy="1.607" fill="#F9F8F8" rx="1.484" ry="1.482" />
+            <path stroke="#F9F8F8" stroke-width=".25" d="M0-.125h21.383"
+                  transform="rotate(56.279 -.76 2.19) skewX(-.062)" />
+            <path stroke="#F9F8F8" stroke-width=".25" d="M1.484 1.482h43.032" />
+            <ellipse cx="13.355" cy="19.393" fill="#FFAC3A" rx="1.484" ry="1.482" />
+            <ellipse cx="44.516" cy="1.607" fill="#FFAC3A" rx="1.484" ry="1.482" />
+            <path stroke="#FFAC3A" stroke-width=".35"
+                  d="M44.516 1.641C29.677 3.865 16.323 6.83 13.355 19.427" />
+          </svg><span class="logo__text">ВТиКГ</span></a>
+          <a href="" data-target="mobile-nav" class="sidenav-trigger">
+            <i class="large material-icons">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <a href="/" class="white-text">Главная</a>
+            </li>
+            <li>
+              <a href="/news">Новости</a>
+            </li>
+              <li>
+                  <a href="/events">События</a>
+              </li>
+            <li>
+              <a href="/teachers">Преподаватели</a>
+            </li>
+              <li>
+                  <a href="/materials">Материалы</a>
+              </li>
+            <li>
+              <a href="/projects">Проекты</a>
+            </li>
+              <li>
+                  <a href="/about">О нас</a>
+              </li>
+            <li>
+              <a href="/contacts" class="white-text">Контакты</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!--Боковое меню-->
+  <ul class="sidenav teal" id="mobile-nav">
+    <li>
+      <a href="/" class="white-text">Главная</a>
+    </li>
+    <li>
+      <a href="/news">Новости</a>
+    </li>
+      <li>
+          <a href="/events">События</a>
+      </li>
+    <li>
+      <a href="/teachers" class="white-text">Преподаватели</a>
+    </li>
+    <li>
+      <a href="/materials" class="white-text">Материалы</a>
+    </li>
+      <li>
+          <a href="/projects" class="white-text">Проекты</a>
+      </li>
+      <li>
+          <a href="/about" class="white-text">О нас</a>
+      </li>
+    <li>
+      <a href="/contacts" class="white-text">Контакты</a>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+.tabs .indicator {
+  background-color: #FFAC3A;
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+  background: transparent;
+}
+
+.color__first {
+  background-color: #C7DAD3;
+}
+
+.parallax-container {
+  height: 250px;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+select {
+  margin-left: 10px;
+  max-width: 1260px;
+}
+main {
+  flex: 1 0 auto;
+}
+.material__height {
+  height: 130px;
+  
+}
+._content {
+  padding-top: 20px;
+}
+
+.thumb-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* задаёт высоту контейнера для 16:9 (если 4:3 — поставьте 75%) */
+  height: 0;
+  overflow: hidden;
+}
+
+.thumb-wrap iframe {
+  margin-top: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-width: 0;
+  outline-width: 0;
+}
+
+.card-title {
+  font-size: 20px !important;
+  line-height: 24px !important;
+}
+
+.author {
+  margin-top: 20px;
+}
+
+.myContainer {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
+
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 70%;
+  }
+}

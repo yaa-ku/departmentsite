@@ -1,0 +1,23 @@
+<div id="eventData" th:fragment="eventcontainer">
+    <th:block th:each="event: ${events}">
+        <div class="col s12 m4 l4">
+            <a class="card-href" th:href="${'/events/'+event.id}">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img th:src="${event.titleImagePath}" alt="Фото карточки"/>
+                        <th:span class="card-title orange black-text z-depth-2 date__card" th:text="${event.startDate}"></th:span>
+                    </div>
+                    <div class="card-content card__height">
+                        <span class="card-title" th:text="${event.title}"></span>
+                        <!--Заголовок-->
+                        <p th:text="${event.description}"></p>
+                    </div>
+                    <div class="card-action">
+                        <span class="orange-text" th:text="${event.categories.get(0).title}"></span>
+                        <!--Категория-->
+                    </div>
+                </div>
+            </a>
+        </div>
+    </th:block>
+</div>

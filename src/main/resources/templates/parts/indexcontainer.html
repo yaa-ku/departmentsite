@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="container" class="container">
+    <div class="row">
+        <h4 class="center orange-text">События</h4>
+        <div th:insert="parts/container::eventcontainer"></div>
+        <div class="right btn__main"><a th:href="@{/events}" class="waves-effect waves-light btn">Все события</a>
+        </div>
+    </div>
+    <div class="row">
+        <h4 class="center orange-text">Новости</h4>
+        <div th:insert="parts/container::newscontainer"></div>
+        <div class="right btn__main"><a th:href="@{/news}" class="waves-effect waves-light btn">Все новости</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

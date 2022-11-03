@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="/css/project.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/d46c136975.js" crossorigin="anonymous"></script>
+    <title>Проект/Новость/Мероприятие</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/materialize/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+        $(()=>{
+            //боковое меню
+            const sideNav = document.querySelector('.sidenav');
+            M.Sidenav.init(sideNav, {});
+            //карусель
+            $(document).ready(function(){
+                $('.carousel').carousel();
+            });
+        })
+    </script>
+</head>
+<body>
+<div th:insert="parts/header::header"></div>
+<main>
+    <div class="container">
+        <h4 class="center orange-text" th:text="${event.title}"></h4>
+        <div class="row"> <!--Аннотация-->
+            <p class="left-align light" th:text="${'Даты проведения: '+event.getDate()}"></p>
+        </div>
+        <div class="row"> <!--Аннотация-->
+            <p class="left-align light" th:text="${event.description}"></p>
+        </div>
+
+        <th:block th:each="block:${event.blocks}">
+            <div class="row"> <!--Блок контента-->
+                <h5 class="orange-text" th:text="${block.title}"></h5>
+                <div class="row">
+                    <p class="left-align light" th:text="${block.content}"></p>
+                </div>
+                <!--<div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="img/kostya.jpg" alt="first"></div>
+                        <div class="swiper-slide"><img src="img/buro.jpg" alt="second"></div>
+                        <div class="swiper-slide"><img src="img/img_02.jpg" alt="third"></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>-->
+                <div class="carousel"> <!--Карусель-->
+                    <th:block th:each="media:${block.media}" th:if="${block.media.size()>1}">
+                        <a class="carousel-item" th:href="${'#'+media.title+'!'}"><img th:src="${media.link}" th:alt="${media.title}"></a>
+                    </th:block>
+                    <a class="carousel-item"  th:if="${block.media.size()==1}" href="#">
+                        <img th:src="${block.media.get(0).link}" th:alt="${block.media.get(0).title}">
+                    </a>
+                </div>
+
+            </div>
+        </th:block>
+    </div>
+</main>
+<div th:insert="parts/footer::footer"></div>
+</body>
+</html>

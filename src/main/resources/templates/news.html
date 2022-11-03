@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/news.css">
+    <script src="https://kit.fontawesome.com/d46c136975.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Title</title>
+
+    <script>
+        $(()=>{
+            const form = document.getElementById("projectCategoryForm")
+            let f = function projectsSubmited(e){
+                let data = []
+                document.getElementsByName("categoryCheckBox").forEach(x=>{
+                    const filter = {
+                        "name":x.id,
+                        "checked":x.checked
+                    }
+                    data.push(filter)
+                    console.log(x.id)
+                })
+                console.log(JSON.stringify(data))
+
+                /*проверить post*/
+                $.post({
+                    url: '/news',
+                    data: JSON.stringify(data),
+                    processData: false,
+                    contentType: "application/json",
+                    success: function(data){
+                        try{
+                            $('#newsData').replaceWith(data)
+                        }catch (e) {
+                            alert(e)
+                        }
+                    },error: function (e){
+                        alert(e)
+                    }
+                })
+                e.preventDefault()
+            }
+            form.addEventListener("submit",f,true)
+        })
+    </script>
+</head>
+<body>
+<div th:insert="parts/header::header"></div>
+<div class="myContainer">
+    <div class="col s12">
+        <div class="row">
+            <h4 class="orange-text center">Новости</h4>
+            <div th:insert="parts/category::project-category"></div>
+            <!--Новости-->
+            <div class="col s12 m8 l9">
+                <div th:insert="parts/container::newscontainer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="parts/footer::footer"></footer>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+
+<script>
+    //боковое меню
+    const sideNav = document.querySelector('.sidenav');
+    M.Sidenav.init(sideNav, {});
+</script>
+</body>
+</html>

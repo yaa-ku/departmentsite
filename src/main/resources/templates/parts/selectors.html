@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="teachers" class="col s12 m12 l12">
+
+    <select id="teacherSelector"  class="browser-default orange-text">
+        <option value="" disabled selected>Выберите преподавателя</option>
+        <option value="all">Все</option>
+        <th:block th:each="teacher:${teachers}">
+            <option th:value="${teacher.id}"><a th:text="${teacher.shortInfo()}"></a></option>
+        </th:block>
+    </select>
+</div>
+
+
+<div th:fragment="category" class="col s12 ">
+    <ul class="tabs tabs-fixed-width">
+        <!--Категории-->
+        <li class="tab col s3"><a href="#all" class="active orange-text">Все</a></li>
+        <th:block th:each="cat:${categories}">
+        <li class="tab col s3"><a th:href="${cat.getTitleRef()}" class="orange-text"><p th:text="${cat.description}"></p>></a></li>
+        </th:block>
+    </ul>
+</div>
+</body>
+</html>

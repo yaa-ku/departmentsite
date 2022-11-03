@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="category" class="col s12 m4 l3">
+    <!--Контейнер для категорий-->
+    <form action="" class="teal lighten-5 _filter z-depth-1">
+        <!--Форма для категорий-->
+        <th:block th:each="filter:${filters}">
+            <p>
+                <label>
+                    <input type="checkbox" th:id="${filter.title}" th:name="${filter.title}"/>
+                    <span th:data-tooltip="${filter.description}" th:text="${filter.title}"></span>
+                </label>
+            </p>
+        </th:block>
+        <p class="center">
+            <a class="waves-effect waves-light btn-small">Применить</a>
+        </p>
+    </form>
+</div>
+<div th:fragment="project-category" class="col s12 m4 l3">
+    <!--Контейнер для категорий-->
+    <form action="#" id="projectCategoryForm" class="teal lighten-5 _filter z-depth-1">
+        <!--Форма для категорий-->
+        <th:clock th:each="filter:${filters}">
+            <p>
+                <label>
+                    <input type="checkbox" name="categoryCheckBox" th:id="${filter.title}"/>
+                    <span th:data-tooltip="${filter.description}" th:text="${filter.title}"></span>
+                </label>
+            </p>
+        </th:clock>
+        <p class="center">
+            <input type="submit"  class="waves-effect waves-light btn-small" value="Применить"/>
+        </p>
+    </form>
+</div>
+
+</body>
+</html>

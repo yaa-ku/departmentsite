@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+    lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,25 +27,35 @@
                 $('.tabs').tabs();
             });
 
-
-
             var s = function (){
-                var valueSelected = this.value;
+                var valueSelected = this.value; //идентификатор преподавателя
                 var data = {"teacher":valueSelected}
-                console.log(data)
-
-
-                    $.post({
-                        url: '/materials',
-                        data: JSON.stringify(data),
+                if(valueSelected=='all')
+                {
+                //console.log(1)
+                    $.get({
+                        url: '/materials/all',
                         processData: false,
                         contentType: "application/json",
                         success: function(data){
                             $('#projectData').replaceWith(data)
                         },error: function (){
                         }
-
                     })
+                }
+                    else {
+                    //console.log(2)
+                        $.post({
+                        url: '/materials',
+                        data: JSON.stringify(data),
+                        processData: false,
+                        contentType: "application/json",
+                        success: function(data){
+                            $('#projectData').replaceWith(data)//привязать скрипт ещё раз, скрипт материалайз
+                        },error: function (){
+                        }
+                    })
+                    }
 
             }
             document.getElementById('teacherSelector').addEventListener('change',s)

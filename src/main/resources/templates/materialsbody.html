@@ -1,10 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<!--подключить скрипт-->
+<script>
+   $(()=>{
+    const sideNav = document.querySelector('.sidenav');
+            M.Sidenav.init(sideNav, {});
+            //параллакс
+            $(document).ready(function () {
+                $('.parallax').parallax();
+            });
+            //табы
+            $(document).ready(function () {
+                $('.tabs').tabs();
+            });
+            })
+</script>
 <div id="projectData">
     <div id="all" class="col s12">
         <div class="row _content">
             <!--Карточка материала-->
             <th:block th:each="ctg:${materials}">
                 <th:block th:each="mat:${ctg.second}">
-                    <div class="col s12 m6 l4">
+                    <div th:id="${'all_'+mat.id}" class="col s12 m6 l4">
                         <a th:href="${'materials/'+mat.id}">
                             <div class="card teal lighten-5 hoverable">
                                 <div class="card-content black-text material__height">
@@ -31,7 +49,7 @@
             <div class="row _content">
                 <!--Карточка материала-->
                 <th:block th:each="mat:${ctg.second}">
-                    <div class="col s12 m6 l4">
+                    <div th:id="${ctg.first.title+'_'+mat.id}" class="col s12 m6 l4">
                         <a th:href="${'materials/'+mat.id}">
                             <div class="card teal lighten-5 hoverable">
                                 <div class="card-content black-text material__height">
